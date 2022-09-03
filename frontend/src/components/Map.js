@@ -27,12 +27,15 @@ function Map() {
 
 
     const getMarkers= () => {
+        /*
         axios.get(
             '/api/getpins'
         ).then(res => {
             console.log(res.data);
             setPins(res.data)
         });
+        */
+       setPins([{'id':'1', 'latitude': 43.0839605, 'longitude': -77.6764436, 'title': 'wtf ', 'text': 'RIT' }])
     }
 
 
@@ -48,8 +51,10 @@ function Map() {
         setMap(null)
     }, [])
     const onClick = React.useCallback(function callback(event, item) {
+        console.log(event);
         if (item.indexOf('marker') !== -1) {
-            var popup = document.getElementById(item);
+            console.log(item);
+            var popup = document.getElementsByClassName(item)[0];
             
 
             if (popup.style.display !== "block") {
@@ -75,6 +80,7 @@ function Map() {
             <div className='submitpin'>
 
             </div>
+            {/*
             <Marker
                 key={'test2'}
                 position={{ lat: 43.084737, lng: -77.6791509 }}
@@ -90,14 +96,15 @@ function Map() {
                     </div>
                 </div>
           </Marker>
+                      */}
             {pins.map(pin => (
                 <Marker
-                    key={pin._id}
+                    key={pin.id}
                     position={{ lat: pin.latitude, lng: pin.longitude }}
-                    onClick={e => onClick(e, `marker:${pin._id}`)}
-                    id={`marker:${pin._id}`}
+                    onClick={e => onClick(e, `marker:${pin.id}`)}
+                    className={`marker:${pin.id}`}
                 >
-                    <div id="overlay" onClick={e => onClick(e,`marker:${pin._id}`)}>
+                    <div id="overlay" onClick={e => onClick(e,`marker:${pin.id}`)}>
                         <div className='close-overlay'>
                             <MdClose class='close-button' />
                         </div>
