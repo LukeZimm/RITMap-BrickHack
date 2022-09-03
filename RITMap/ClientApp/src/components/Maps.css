@@ -1,0 +1,56 @@
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+ #text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+  }
+
+
+.map {
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+    width: 90%;
+    margin:auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.popup {
+    width: 400px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.728);
+    border-radius: 15px;
+    color: #fff;
+    text-align: center;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button {
+    width: 64px;
+    height: 64px;
+    margin-top:32px;
+    margin-left:32px;
+    color:#fff;
+}
+
+.close-button:hover{
+    color: rgba(0, 0, 0, 0.728);
+}

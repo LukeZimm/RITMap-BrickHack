@@ -25,7 +25,6 @@ namespace RITMap.Controllers
         [HttpGet("getpins")]
         public List<Pin> GetPins()
         {
-            // get post object
             return _dbcontext.Pins.ToList();
         }
 
