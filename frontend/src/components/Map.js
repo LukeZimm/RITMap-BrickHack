@@ -1,6 +1,6 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { MdBlurOn } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import './Maps.css';
 const api_key = 'AIzaSyDH-KRabVOXL9wpJvRoeMJRNvGLn9Qd9wI';
 
@@ -22,6 +22,10 @@ function Map() {
     })
 
     const [map, setMap] = React.useState(null)
+    const getMarkers= () => {
+        /*
+        */
+    }
 
     const onLoad = React.useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds(center);
@@ -65,6 +69,9 @@ function Map() {
                 onClick={e => onClick(e, 'marker')}
             >
                 <div id="overlay">
+                    <div className='close-overlay' onClick={e => onClick(e, 'map')}>
+                        <MdClose style={{'width': '64px', 'height':'64px'}} />
+                    </div>
                     <div id="text">Overlay Text</div>
                 </div>
           </Marker>
