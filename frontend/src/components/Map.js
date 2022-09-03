@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { MdClose } from "react-icons/md";
+import { MdClose, MdFormatLineSpacing } from "react-icons/md";
 import axios from 'axios';
 import './Maps.css';
 const api_key = 'AIzaSyDH-KRabVOXL9wpJvRoeMJRNvGLn9Qd9wI';
@@ -18,6 +18,11 @@ const center = {
 
 function Map() {
     const [pins, setPins] = useState([]);
+    const [newpin, setNewPin] = useState(null);
+
+    const [formtitle, setFormTitle] = useState('');
+    const [formtext, setFormText] = useState('');
+
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: api_key
@@ -38,6 +43,10 @@ function Map() {
        setPins([{'id':'1', 'latitude': 43.0839605, 'longitude': -77.6764436, 'title': 'wtf ', 'text': 'RIT' }])
     }
 
+
+    const createPin = () => {
+
+    }
 
 
     const onLoad = React.useCallback(function callback(map) {
@@ -64,10 +73,32 @@ function Map() {
             };
         }
         else if (item ==='map') {
-            console.log(event.lat)
+            setNewPin({'latitude': event.latLng.lat(), 'longitude': event.latLng.lng()})
+            console.log()
             
         }
     }, []);
+
+    const onClickForm = React.useCallback(function callback(event, item) {
+        setNewPin(null)
+    }, []);
+
+    function OnSubmitForm(e) {
+        e.preventDefault();
+        axios.post('/api/createpin', {
+            latitude: newpin.latitude,
+            longitude: newpin.longitude,
+            title: formtitle,
+            text: formtext
+        }).then(res => {
+            console.log(res.data);
+            getMarkers();
+            setNewPin(null);
+            setFormTitle('');
+            setFormText('');
+        })
+
+    }
 
     return isLoaded ? (
         <GoogleMap
@@ -111,6 +142,29 @@ function Map() {
                         </div>
                     </Marker>
             ))}
+            {newpin && (<>
+                <Marker
+                    key={'new'}
+                    position={{ lat: newpin.latitude, lng: newpin.longitude }}
+                ></Marker>
+                
+                <div className="overlay" style={{'display':'block'}} >
+                    <div className='close-overlay' onClick={e => onClickForm(e)}>
+                        <MdClose class='close-button' />
+                    </div>
+                    <div className='popup'>
+                        <h2>Create Pin</h2>
+                        <form type="post">
+                            <label>Title</label>
+                            <input type="text" name="title" value={formtitle} onChange={e => setFormTitle(e.target.value)}/>
+                            <label>Text</label>
+                            <input type="text" name="text" value={formtext} onChange={e => setFormText(e.target.value)}/>
+                            <button onClick={e => OnSubmitForm(e)}>Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                </>)}
 
             {/*id, title, text, lat, lng, catagory"*/}
         </GoogleMap>

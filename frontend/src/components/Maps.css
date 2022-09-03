@@ -54,3 +54,16 @@
 .close-button:hover{
     color: rgba(0, 0, 0, 0.728);
 }
+
+
+.create-pin {
+    width: 400px;
+    height: 200px;
+    background-color: rgba(249, 252, 255, 0.81);
+    border-radius: 10px;
+    color: #000;
+    text-align: center;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
