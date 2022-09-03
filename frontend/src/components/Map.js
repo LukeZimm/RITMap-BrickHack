@@ -32,22 +32,13 @@ function Map() {
 
 
     const getMarkers= () => {
-        /*
         axios.get(
             '/api/getpins'
         ).then(res => {
             console.log(res.data);
             setPins(res.data)
         });
-        */
-       setPins([{'id':'1', 'latitude': 43.0839605, 'longitude': -77.6764436, 'title': 'wtf ', 'text': 'RIT' }])
     }
-
-
-    const createPin = () => {
-
-    }
-
 
     const onLoad = React.useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds(center);
@@ -152,14 +143,18 @@ function Map() {
                     <div className='close-overlay' onClick={e => onClickForm(e)}>
                         <MdClose class='close-button' />
                     </div>
-                    <div className='popup'>
+                    <div className='submit-popup'>
                         <h2>Create Pin</h2>
                         <form type="post">
-                            <label>Title</label>
-                            <input type="text" name="title" value={formtitle} onChange={e => setFormTitle(e.target.value)}/>
-                            <label>Text</label>
-                            <input type="text" name="text" value={formtext} onChange={e => setFormText(e.target.value)}/>
-                            <button onClick={e => OnSubmitForm(e)}>Submit</button>
+                            <label>Pin Title</label>
+                            <br/>
+                            <input class="title" type="text" name="title" value={formtitle} onChange={e => setFormTitle(e.target.value)}/>
+                            <br/>
+                            <label>Pin Text</label>
+                            <br/>
+                            <input class="textbox" type="text" name="text" value={formtext} onChange={e => setFormText(e.target.value)}/>
+                            <br/>
+                            <button className='submit' onClick={e => OnSubmitForm(e)}>Submit</button>
                         </form>
                     </div>
                 </div>
