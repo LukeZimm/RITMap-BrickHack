@@ -54,7 +54,7 @@ function Map() {
         console.log(event);
         if (item.indexOf('marker') !== -1) {
             console.log(item);
-            var popup = document.getElementsByClassName(item)[0];
+            var popup = document.getElementById(item);
             
 
             if (popup.style.display !== "block") {
@@ -77,9 +77,6 @@ function Map() {
             onClick={e => onClick(e, 'map')}
             mapContainerClassName="map"
         >
-            <div className='submitpin'>
-
-            </div>
             {/*
             <Marker
                 key={'test2'}
@@ -98,22 +95,21 @@ function Map() {
           </Marker>
                       */}
             {pins.map(pin => (
-                <Marker
-                    key={pin.id}
-                    position={{ lat: pin.latitude, lng: pin.longitude }}
-                    onClick={e => onClick(e, `marker:${pin.id}`)}
-                    className={`marker:${pin.id}`}
-                >
-                    <div id="overlay" onClick={e => onClick(e,`marker:${pin.id}`)}>
-                        <div className='close-overlay'>
-                            <MdClose class='close-button' />
+                    <Marker
+                        key={pin.id}
+                        position={{ lat: pin.latitude, lng: pin.longitude }}
+                        onClick={e => onClick(e, `marker:${pin.id}`)}
+                    >
+                        <div id={`marker:${pin.id}`} className="overlay" onClick={e => onClick(e,`marker:${pin.id}`)}>
+                            <div className='close-overlay'>
+                                <MdClose class='close-button' />
+                            </div>
+                            <div className='popup'>
+                                <h2>{pin.title}</h2>
+                                <div>{pin.text}</div>
+                            </div>
                         </div>
-                        <div className='popup'>
-                            <h2>{pin.title}</h2>
-                            <div>{pin.text}</div>
-                        </div>
-                    </div>
-                </Marker>
+                    </Marker>
             ))}
 
             {/*id, title, text, lat, lng, catagory"*/}

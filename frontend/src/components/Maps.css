@@ -1,4 +1,4 @@
-#overlay {
+.overlay {
     position: fixed;
     display: none;
     width: 100%;
@@ -12,7 +12,7 @@
     cursor: pointer;
   }
   
- #text{
+ .text{
     position: absolute;
     top: 50%;
     left: 50%;
