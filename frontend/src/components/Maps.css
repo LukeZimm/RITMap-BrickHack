@@ -30,3 +30,27 @@
     margin:auto;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+.popup {
+    width: 400px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.728);
+    border-radius: 15px;
+    color: #fff;
+    text-align: center;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button {
+    width: 64px;
+    height: 64px;
+    margin-top:32px;
+    margin-left:32px;
+    color:#fff;
+}
+
+.close-button:hover{
+    color: rgba(0, 0, 0, 0.728);
+}
