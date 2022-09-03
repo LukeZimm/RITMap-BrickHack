@@ -14,7 +14,8 @@ const center = {
     lng: -77.6764436
 };
 
-function MyComponent() {
+
+function Map() {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: api_key
@@ -31,30 +32,46 @@ function MyComponent() {
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null)
     }, [])
-    const onClick = React.useCallback(function callback(event) {
+    const onClick = React.useCallback(function callback(event, item) {
         console.log(event.latLng.lat(), event.latLng.lng())
+        if (item === 'marker') {
+            var popup = document.getElementById("overlay");
+            console.log(popup);
+            if (popup.style.display !== "block") {
+                popup.style.display = "block";
+            } else {
+                popup.style.display = "none";
+            };
+        }
     }, []);
 
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
-            center={center}
             zoom={16}
             onLoad={onLoad}
             onUnmount={onUnmount}
+            onClick={onClick}
         >
             <Marker
-                key={'test'}
-                position={{ lat: 43.0839607, lng: -77.6764436 }}
-            />
+                key={'test2'}
+                title={"This is a title"}
+                position={{ lat: 43.084737, lng: -77.6791509 }}
+                onClick={e => onClick(e, 'marker')}
+            ><div id="overlay" onclick="off()">
+            <div id="text">Overlay Text</div>
+          </div>
+          </Marker>
+
             <Marker
                 key={'test2'}
                 title={"This is a title"}
                 position={{ lat: 43.0839635, lng: -77.6764336 }}
                 onClick={onClick}
+                
             />
         </GoogleMap>
     ) : <></>
 }
 
-export default React.memo(MyComponent)
+export default React.memo(Map)
