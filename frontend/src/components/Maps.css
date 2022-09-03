@@ -21,3 +21,12 @@
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
   }
+
+
+.map {
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+    width: 90%;
+    margin:auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
