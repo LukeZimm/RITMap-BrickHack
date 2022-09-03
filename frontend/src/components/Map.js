@@ -49,7 +49,7 @@ function Map() {
     }, [])
     const onClick = React.useCallback(function callback(event, item) {
         if (item.indexOf('marker') !== -1) {
-            var popup = document.getElementById(event);
+            var popup = document.getElementById(item);
             
 
             if (popup.style.display !== "block") {
@@ -97,7 +97,7 @@ function Map() {
                     onClick={e => onClick(e, `marker:${pin._id}`)}
                     id={`marker:${pin._id}`}
                 >
-                    <div id="overlay" onClick={e => onClick(e, 'marker')}>
+                    <div id="overlay" onClick={e => onClick(e,`marker:${pin._id}`)}>
                         <div className='close-overlay'>
                             <MdClose class='close-button' />
                         </div>
