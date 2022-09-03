@@ -28,7 +28,7 @@ function Map() {
 
     const getMarkers= () => {
         axios.get(
-            '/api/getpisns'
+            '/api/getpins'
         ).then(res => {
             console.log(res.data);
             setPins(res.data)
@@ -48,10 +48,10 @@ function Map() {
         setMap(null)
     }, [])
     const onClick = React.useCallback(function callback(event, item) {
-        if (item === 'marker') {
-            var popup = document.getElementById("overlay");
-            console.log(popup);
+        if (item.indexOf('marker') !== -1) {
+            var popup = document.getElementById(event);
             
+
             if (popup.style.display !== "block") {
                 popup.style.display = "block";
             } else {
@@ -59,7 +59,7 @@ function Map() {
             };
         }
         else if (item ==='map') {
-
+            console.log(event.lat)
             
         }
     }, []);
@@ -72,6 +72,9 @@ function Map() {
             onClick={e => onClick(e, 'map')}
             mapContainerClassName="map"
         >
+            <div className='submitpin'>
+
+            </div>
             <Marker
                 key={'test2'}
                 position={{ lat: 43.084737, lng: -77.6791509 }}
@@ -91,7 +94,8 @@ function Map() {
                 <Marker
                     key={pin._id}
                     position={{ lat: pin.latitude, lng: pin.longitude }}
-                    onClick={e => onClick(e, 'marker')}
+                    onClick={e => onClick(e, `marker:${pin._id}`)}
+                    id={`marker:${pin._id}`}
                 >
                     <div id="overlay" onClick={e => onClick(e, 'marker')}>
                         <div className='close-overlay'>
@@ -99,7 +103,7 @@ function Map() {
                         </div>
                         <div className='popup'>
                             <h2>{pin.title}</h2>
-                            <div>{pin.description}</div>
+                            <div>{pin.text}</div>
                         </div>
                     </div>
                 </Marker>

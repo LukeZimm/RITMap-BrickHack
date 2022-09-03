@@ -33,10 +33,10 @@
 
 .popup {
     width: 400px;
-    height: 600px;
-    background-color: rgba(0, 0, 0, 0.728);
-    border-radius: 15px;
-    color: #fff;
+    height: 200px;
+    background-color: rgba(249, 252, 255, 0.81);
+    border-radius: 10px;
+    color: #000;
     text-align: center;
     margin: auto;
     align-items: center;
