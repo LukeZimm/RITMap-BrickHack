@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
-import './custom.css';
+import logo from './logo.svg';
+import './App.css';
 
-export default class App extends Component {
-  static displayName = App.name;
+import GoogleMap from './components/Map';
+//AIzaSyDH-KRabVOXL9wpJvRoeMJRNvGLn9Qd9wI
 
-  render() {
-    return (
-      <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
-    );
-  }
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+const handleApiLoaded = (map, maps) => {
+  // use map and maps objects
+};
+
+
+function App() {
+  return (
+    <div>
+      <GoogleMap/>
+    </div>
+  );
 }
+
+export default App;
