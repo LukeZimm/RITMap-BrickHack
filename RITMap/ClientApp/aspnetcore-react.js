@@ -33,10 +33,10 @@ SSL_KEY_FILE=${keyFilePath}`
 
   let hasCert, hasCertKey = false;
   for (const line of lines) {
-    if (/SSL_CRT_FILE=.*/i.test(line)) {
+    if (/SSL_CRT_FILE=.*//*i.test(line)) {
       hasCert = true;
     }
-    if (/SSL_KEY_FILE=.*/i.test(line)) {
+    if (/SSL_KEY_FILE=.*//*i.test(line)) {
       hasCertKey = true;
     }
   }
