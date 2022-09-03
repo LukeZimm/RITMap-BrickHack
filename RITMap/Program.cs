@@ -1,8 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using RITMap.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationContext>();
 
 var app = builder.Build();
 
