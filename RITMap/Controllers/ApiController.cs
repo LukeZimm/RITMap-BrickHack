@@ -29,6 +29,12 @@ namespace RITMap.Controllers
             return _dbcontext.Pins.ToList();
         }
 
+        [HttpGet("getpins/{category}")]
+        public List<Pin> GetPins(string category)
+        {
+            return _dbcontext.Pins.Where(x => x.Category == category).ToList();
+        }
+
         [HttpPost("createpin")]
         public void CreatePin(Pin pin)
         {
