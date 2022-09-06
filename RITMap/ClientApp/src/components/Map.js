@@ -75,9 +75,7 @@ function Map() {
     }, []);
 
     function reportPin(pid) {
-        axios.post('/api/reportpin', {
-            pin_id:pid
-        });
+        axios.post(`/api/report/${pid}`);
     }
     function OnSubmitForm(e) {
         e.preventDefault();
