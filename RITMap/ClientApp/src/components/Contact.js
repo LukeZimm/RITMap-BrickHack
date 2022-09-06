@@ -1,11 +1,11 @@
 const Contact = () => {
     return (
-        <div class="container mt-20 max-w-2xl px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto align-middle" >
+        <div className="container mt-20 max-w-2xl px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto align-middle" >
 
-            <div class="mt-2">
-                <a href="#" class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">Contact</a>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">Developer Contacts: </p>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">Don't spam us with unimportant stuff. We have a report button, please only contact us if its urgent.</p>
+            <div className="mt-2">
+                <a href="#" className="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline">Contact</a>
+                <p className="mt-2 text-gray-600 dark:text-gray-300">Developer Contacts: </p>
+                <p className="mt-2 text-gray-600 dark:text-gray-300">Don't spam us with unimportant stuff. We have a report button, please only contact us if its urgent.</p>
                 <br/>
                 <span className="dark:text-gray-300">b</span>
                 <span className="dark:text-gray-300">c</span>

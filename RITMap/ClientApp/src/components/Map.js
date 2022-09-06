@@ -174,7 +174,7 @@ function Map() {
                                             <input type="text" onChange={e => setFormTitle(e.target.value)} name="body" id="email" placeholder="Text" className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300" />
                                         </label>
 
-                                        <select id="catagory" onChange={e => setFormCatagory(e.target.value)} class="mt-3 bg-gray-50 border text-gray-800 capitalize dark:text-whitetext-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-700 dark:ng-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <select id="catagory" onChange={e => setFormCatagory(e.target.value)} className="mt-3 bg-gray-50 border text-gray-800 capitalize dark:text-whitetext-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-700 dark:ng-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                             <option value="review" selected>Review</option>
                                             <option value="cool">Cool</option>
                                             <option value="shitpost">Shitpost</option>
