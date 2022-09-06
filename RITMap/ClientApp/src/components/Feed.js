@@ -11,32 +11,31 @@ function Feed() {
         });
     }
 
-    const onLoad = React.useCallback(function callback(map) {
+    useEffect(()=>{
         getMarkers();
     }, [])
 
 
     return <>
-        {pins.map(pin => 
-            <div key={pin.id}>
-                <section  className="bg-white dark:bg-gray-900">
+        <section className="bg-white dark:bg-gray-900">
+            <h1 className="text-4xl font-semibold text-center text-gray-800 dark:text-white">Feed</h1>
+            {pins.map(pin => 
+                <div key={pin.id}>
                     <div className="container max-w-4xl px-6 py-10 mx-auto">
-                        <h1 className="text-4xl font-semibold text-center text-gray-800 dark:text-white">{pin.title}</h1>
-
-                        <div className="mt-12 space-y-8">
+                        <div className="mt-12 space-y-8 text-center">
                             <div className="border-2 border-gray-100 rounded-lg dark:border-gray-700">
-                                    <h1 className="font-semibold text-gray-700 dark:text-white">Latitude: {pin.latitude} Longitude: {pin.longitude}</h1>
-
-
+                                <h1 className="font-semibold text-gray-700 dark:text-white" >{pin.title}</h1>
                                 <p className="p-8 text-sm text-gray-500 dark:text-gray-300">
-                                   {pin.text}
+                                    {pin.text}
+                                    <br />
+                                    Latitude: {pin.latitude} Longitude: {pin.longitude}
                                 </p>
                             </div>
                             </div>
                         </div>
-                </section>
-            </div>
-        )}
+                </div>
+            )}
+        </section>
     </>;
 }
 
