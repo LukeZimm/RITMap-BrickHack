@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Microsoft.Extensions.Hosting;
 using System.Xml.Linq;
 using RITMap.Context;
+using System.Xml.XPath;
 
 namespace RITMap.Controllers
 {
@@ -41,7 +42,19 @@ namespace RITMap.Controllers
             if (pin.Longitude > -77.68697 && pin.Longitude < -77.66465
                 && pin.Latitude > 43.07808 && pin.Latitude < 43.09281)
             {
+                pin.Reports = 0;
                 _dbcontext.Pins.Add(pin);
+                _dbcontext.SaveChanges();
+            }
+        }
+        [HttpPost("api/report/{id}")]
+        public void ReportPin(int id)
+        {
+            // get pin with id
+            var pin = _dbcontext.Pins.FirstOrDefault(x => x.Id == id);
+            if (pin != null)
+            {
+                pin.Reports++;
                 _dbcontext.SaveChanges();
             }
         }
