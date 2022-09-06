@@ -26,13 +26,13 @@ namespace RITMap.Controllers
         [HttpGet("getpins")]
         public List<Pin> GetPins()
         {
-            return _dbcontext.Pins.ToList();
+            return _dbcontext.Pins.ToList().OrderByDescending(x => x.Id).ToList();
         }
 
         [HttpGet("getpins/{category}")]
         public List<Pin> GetPins(string category)
         {
-            return _dbcontext.Pins.Where(x => x.Category == category).ToList();
+            return _dbcontext.Pins.Where(x => x.Category == category).OrderByDescending(x => x.Id).ToList();
         }
 
         [HttpPost("createpin")]
@@ -47,7 +47,7 @@ namespace RITMap.Controllers
                 _dbcontext.SaveChanges();
             }
         }
-        [HttpPost("api/report/{id}")]
+        [HttpPost("report/{id}")]
         public void ReportPin(int id)
         {
             // get pin with id

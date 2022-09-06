@@ -16,7 +16,10 @@ function Feed() {
         getMarkers();
     }, [])
 
-
+    function reportPin(pid) {
+        axios.post(`/api/report/${pid}`);
+        alert('Reported post, thank you!');
+    }
     return <>
         <section className="bg-white dark:bg-gray-900">
             <div className="container max-w-4xl px-6 py-10 mx-auto">
@@ -27,10 +30,11 @@ function Feed() {
                     <button className="flex items-center justify-between w-full p-8">
                         <h1 className="font-semibold text-gray-700 dark:text-white">{pin.title}</h1>
                         <h1 className="font-semibold text-gray-700 dark:text-gray-500">Lon: {pin.longitude} Lat: {pin.latitude}</h1>
+                        <a onClick={() => reportPin(`${pin.id}`)} className="text-sm text-blue-500 hover:underline">Report</a>
                     </button>
 
                     <hr className="border-gray-200 dark:border-gray-700"/>
-
+                    
                     <p className="p-8 text-sm text-gray-500 dark:text-gray-300">
                         {pin.text}
                     </p>
