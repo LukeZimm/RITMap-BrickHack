@@ -39,7 +39,7 @@ namespace RITMap.Controllers
         public void CreatePin(Pin pin)
         {
             // check pin is in bounds
-            if (pin.Longitude > -77.68697 && pin.Longitude < -77.66465
+            if (pin.Longitude > -77.68697 && pin.Longitude < -77.6537
                 && pin.Latitude > 43.07808 && pin.Latitude < 43.09281)
             {
                 pin.Reports = 0;
